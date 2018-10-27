@@ -15,7 +15,6 @@ services:
       - redis_data:/data
   
   build_cache:
-    box:
     image: busybox
     volumes:
       - bundle_cache:/bundler
