@@ -10,7 +10,7 @@ To generate a new rails application using vine template and docker
 
 ### run template installer
 ```bash
-  docker-compose run --rm app rails new . -T -d postgresql -m https://raw.githubusercontent.com/bmartel/vine/master/template.rb
+  docker-compose run --rm app bundle exec rails new . -T -d postgresql -m https://raw.githubusercontent.com/bmartel/vine/master/template.rb
 ```
 
 ### change any configurations to generated files, then bring up the stack
