@@ -40,8 +40,7 @@ services:
     volumes:
       - .:/usr/src/app
       - node_modules:/usr/src/app/node_modules
-    volumes_from:
-      - build_cache
+      - bundle_cache:/bundler
       
   web:
     build:
@@ -83,8 +82,8 @@ services:
       - app
     volumes:
       - .:/usr/src/app
-    volumes_from:
-      - build_cache
+      - node_modules:/usr/src/app/node_modules
+      - bundle_cache:/bundler
 
 volumes:
   bundle_cache:
