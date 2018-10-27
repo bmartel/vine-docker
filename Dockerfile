@@ -1,4 +1,4 @@
-FROM bmartel/ruby:2.6-rc-base
+FROM bmartel/ruby:2.5-slim
 
 WORKDIR $APP_PATH
 
