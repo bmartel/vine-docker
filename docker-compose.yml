@@ -13,6 +13,13 @@ services:
       - "6379"
     volumes:
       - redis_data:/data
+  
+  build_cache:
+    box:
+    image: busybox
+    volumes:
+      - bundle_cache:/bundler
+      
   app:
     build:
       context: .
@@ -34,6 +41,9 @@ services:
     volumes:
       - .:/usr/src/app
       - node_modules:/usr/src/app/node_modules
+    volumes_from:
+      - build_cache
+      
   web:
     build:
       context: .
@@ -56,6 +66,7 @@ services:
       - app
     volumes:
       - ./public:/app/public
+
   worker:
     build:
       context: .
@@ -73,7 +84,11 @@ services:
       - app
     volumes:
       - .:/usr/src/app
+    volumes_from:
+      - build_cache
+
 volumes:
+  bundle_cache:
   node_modules:
   postgres_data:
   redis_data:
